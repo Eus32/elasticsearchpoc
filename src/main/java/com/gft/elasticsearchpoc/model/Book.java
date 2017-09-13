@@ -6,7 +6,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
 /**
  * Created by eusvercher on 4/9/17.
  */
-@Document(indexName = "mkyong", type = "books")
+@Document(indexName = "library", type = "books")
 public class Book {
 
     @Id

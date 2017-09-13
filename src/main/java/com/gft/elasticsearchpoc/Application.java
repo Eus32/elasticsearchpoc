@@ -10,6 +10,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.elasticsearch.core.ElasticsearchOperations;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Map;
 
@@ -18,6 +20,8 @@ import java.util.Map;
  */
 @SpringBootApplication
 public class Application implements CommandLineRunner {
+
+    private final Logger logger = LoggerFactory.getLogger(Application.class);
 
     @Autowired
     private ElasticsearchOperations es;
@@ -37,6 +41,14 @@ public class Application implements CommandLineRunner {
         bookService.save(new Book("1001", "Elasticsearch Basics", "Rambabu Posa", "23-FEB-2017"));
         bookService.save(new Book("1002", "Apache Lucene Basics", "Rambabu Posa", "13-MAR-2017"));
         bookService.save(new Book("1003", "Apache Solr Basics", "Rambabu Posa", "21-MAR-2017"));
+        bookService.save(new Book("1004", "Apache Solr Basics_1", "Rambabu Posa_1", "21-MAR-2017"));
+        bookService.save(new Book("1005", "Apache Solr Basics_1", "Rambabu Posa_1", "21-MAR-2017"));
+
+
+        logger.warn("WARN");
+        logger.warn("WARN");
+
+        logger.error("ERROR");
 
         //fuzzey search
         Page<Book> books = bookService.findByAuthor("Rambabu", new PageRequest(0, 10));
